@@ -1,0 +1,131 @@
+.title{
+    margin:0;
+    padding-bottom:20px;
+}
+.inner{
+    position:relative;
+    z-index:10;
+    padding-left:40px;
+}
+ 
+.page-header{
+    position:relative;
+    padding:80px 0;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.page-header:before{
+    content:'';
+    position:absolute;
+    display:block;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    opacity:.7;
+}
+.page-header .breadcrumb li:before,
+.page-header .breadcrumb li:last-child:after{
+    display:none;
+}
+.page-header .inner{
+    position:relative;
+    z-index:10;
+}
+.page-header .title{
+    color:#fff;
+    font-weight:400;
+    margin:0;
+    padding:0;
+    text-transform:capitalize;
+}
+.page-header .breadcrumb{
+    background:0 0;
+    padding:0;margin:0;
+}
+.page-header .breadcrumb li{
+    margin:0;
+    padding:5px 0;
+    color:#fff;
+}
+.page-header .breadcrumb li:after{
+    content:'|';
+    padding:0 10px 0 16px;
+    color:#fff;
+}
+.page-header .breadcrumb li:last-child{
+    padding:5px;
+    color:#b3bbce;
+}
+
+
+.list {
+    /* margin-top:-150px; */
+    z-index: 99;
+}
+
+.list {
+    margin-top: 3%;
+    margin-bottom: 4%;
+}
+
+.ry {
+    padding: 10px;
+}
+
+.list .list-box .list-image {
+    max-height: 300px;
+}
+
+
+.title {
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+
+.list-box {
+    position: relative;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.list-box .list-image {
+    position: relative;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.list-box .list-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.list-box {
+    -webkit-border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
+    overflow: hidden;
+}
+
+
+
+.list-box .list-content .title {
+    color: #fff;
+    font-size: 1.9em;
+    font-weight: 500;
+}
+
+.listing-image img {
+    height: auto;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-drag: none;
+    -user-drag: none;
+}
+
+#paging{
+    text-align: center;
+    padding-top: 80px;
+}

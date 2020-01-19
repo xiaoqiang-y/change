@@ -1,0 +1,189 @@
+#news-items{
+    padding:40px 0;
+}
+.title{
+    margin:0;
+    padding-bottom:20px;
+}
+.inner{
+    position:relative;
+    z-index:10;
+    padding-left:40px;
+}
+ 
+.page-header{
+    position:relative;
+    padding:80px 0;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.page-header:before{
+    content:'';
+    position:absolute;
+    display:block;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    opacity:.7;
+}
+.page-header .breadcrumb li:before,
+.page-header .breadcrumb li:last-child:after{
+    display:none;
+}
+.page-header .inner{
+    position:relative;
+    z-index:10;
+}
+.page-header .title{
+    color:#fff;
+    font-weight:400;
+    margin:0;
+    padding:0;
+    text-transform:capitalize;
+}
+.page-header .breadcrumb{
+    background:0 0;
+    padding:0;margin:0;
+}
+.page-header .breadcrumb li{
+    margin:0;
+    padding:5px 0;
+    color:#fff;
+}
+.page-header .breadcrumb li:after{
+    content:'|';
+    padding:0 10px 0 16px;
+    color:#fff;
+}
+.page-header .breadcrumb li:last-child{
+    padding:5px;
+    color:#b3bbce;
+}
+
+.blog-post{
+    margin:0 30px 40px 0;
+    padding-bottom:40px;
+    border-bottom:1px solid #e3e3e3;
+}
+.blog-post:last-of-type{
+    border:0;
+    margin-bottom:20px;
+}
+.blog-post .blog-thumb{
+    position:relative;
+    padding:0;
+    margin-bottom:30px;
+    max-height:350px;
+    overflow:hidden;
+}
+.blog-post .blog-thumb a:before{
+    position:absolute;
+    opacity:0;
+    top:0;
+    left:0;
+    z-index:1;
+    transition:all .8s ease;
+}
+.blog-post .blog-thumb:hover a:before{
+    opacity:.6;
+}
+.blog-post .blog-thumb a:after{
+    z-index:2;
+}
+.blog-post .blog-thumb img{
+    width:100%;
+    -webkit-transition:all .8s ease;
+    -moz-transition:all .8s ease;
+    -ms-transition:all .8s ease;
+    -o-transition:all .8s ease;
+    transition:all .8s ease;
+}
+.blog-post .blog-thumb:hover img{
+    -webkit-transform:scale(1.5);
+    -moz-transform:scale(1.5);
+    -ms-transform:scale(1.5);
+    -o-transform:scale(1.5);
+    transform:scale(1.5);
+    -webkit-filter:blur(10px);
+    -moz-filter:blur(10px);
+    -ms-filter:blur(10px);
+    -o-filter:blur(10px);
+    filter:blur(10px);
+}
+.blog-post .post-content .title{
+    font-weight:500;
+    margin:0;padding:0;
+}
+.blog-post .post-content .post-meta{
+    list-style:none
+    ;padding:0;
+    margin:5px 0 0;
+}
+.blog-post .post-content .post-meta li{
+    display:inline-block;
+    color:#8d97ad;
+}
+.blog-post .post-content .post-meta li:after{
+    content:"";
+    width:1px;
+    height:12px;
+    background:#d0d0d0;display:inline-block;
+    position:relative;top:0;margin:0 10px;
+}
+.blog-post .post-content .post-meta li:last-child:after{
+    display:none;
+}
+
+.hover-link:after{
+    content:'\f0c1';
+    font-family:fontawesome;
+    color:#f6f6f6;
+    font-size:26px;
+    cursor:pointer;
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%,-50%) scale(0);
+    -moz-transform:translate(-50%,-50%) scale(0);
+    -ms-transform:translate(-50%,-50%) scale(0);
+    -o-transform:translate(-50%,-50%) scale(0);
+    transform:translate(-50%,-50%) scale(0);
+    opacity:0;
+    -webkit-transition:all .6s ease;
+    -moz-transition:all .6s ease;
+    -ms-transition:all .6s ease;
+    -o-transition:all .6s ease;
+    transition:all .6s ease;
+}
+.hover-link:hover:after{
+    opacity:.7;
+    -webkit-transform:translate(-50%,-50%) scale(1);
+    -moz-transform:translate(-50%,-50%) scale(1);
+    -ms-transform:translate(-50%,-50%) scale(1);
+    -o-transform:translate(-50%,-50%) scale(1);
+    transform:translate(-50%,-50%) scale(1);
+}
+#paging{
+    text-align: center;
+    padding-top: 150px;
+}
+
+#new{
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+.news_text{
+    text-transform: uppercase;
+    text-align: center;
+    font-style: normal;
+    margin-bottom: 35px;
+    position: relative;
+    font-weight: 700;
+    letter-spacing: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+}
+ 
