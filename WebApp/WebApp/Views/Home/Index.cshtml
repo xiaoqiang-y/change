@@ -1,32 +1,1298 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "首页";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- 分类菜单 -->
+<div class="header-nav-container rows-space-20">
+    <div class="container">
+        <div class="header-nav-wapper main-menu-wapper">
+            <div class="vertical-wapper block-nav-categori">
+                <div class="block-title">
+                    <span class="icon-bar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </span>
+                    <span class="text">商品分类</span>
+                </div>
+                <div class="block-content verticalmenu-content">
+                    <ul class="tanajil-nav-vertical vertical-menu tanajil-clone-mobile-menu">
+
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#" class="tanajil-menu-item-title">
+                                <i class="iconfont">&#xe83a;</i>&nbsp;&nbsp;&nbsp;服装
+                            </a>
+                            <span class="toggle-submenu"></span>
+                            <ul role="menu" class=" submenu">
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">上衣</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">裤子</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">裙子</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">帽子</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">鞋子</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#" class="tanajil-menu-item-title">
+                                <i class="iconfont">&#xe820;</i>&nbsp;&nbsp;&nbsp;数码
+                            </a>
+                            <span class="toggle-submenu"></span>
+                            <ul role="menu" class=" submenu">
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">手机</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">电脑</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">配件</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">智能硬件</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">数码</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#" class="tanajil-menu-item-title">
+                                <i class="iconfont">&#xe6d7;</i>&nbsp;&nbsp;&nbsp;家居
+                            </a>
+                            <span class="toggle-submenu"></span>
+                            <ul role="menu" class=" submenu">
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">家具</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">厨具</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">家纺</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">生活用品</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">灯具</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">卫浴</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#" class="tanajil-menu-item-title">
+                                <i class="iconfont">&#xe6d2;</i>&nbsp;&nbsp;&nbsp;美妆
+                            </a>
+                            <span class="toggle-submenu"></span>
+                            <ul role="menu" class=" submenu">
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">护肤</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">彩妆</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">洗护发</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">身体护理</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">洁面</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#" class="tanajil-menu-item-title">
+                                <i class="iconfont">&#xe707;</i>&nbsp;&nbsp;&nbsp;美食
+                            </a>
+                            <span class="toggle-submenu"></span>
+                            <ul role="menu" class=" submenu">
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">茶叶</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">零食</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">咖啡</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">水果</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">巧克力</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#" class="tanajil-menu-item-title">
+                                <i class="iconfont">&#xe6e1;</i>&nbsp;&nbsp;&nbsp;母婴
+                            </a>
+                            <span class="toggle-submenu"></span>
+                            <ul role="menu" class=" submenu">
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">奶粉</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">辅食</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">玩具</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">喂养</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#" class="tanajil-item-title">洗护</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- 导航 -->
+            <div class="header-nav">
+                <div class="container-wapper">
+                    <ul class="tanajil-clone-mobile-menu tanajil-nav main-menu " id="menu-main-menu">
+                        <li class="menu-item  menu-item-has-children active">
+                            <a href="#" class="tanajil-menu-item-title" title="首页">首页</a>
+
+                        </li>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#" class="tanajil-menu-item-title" title="促销活动">促销活动</a>
+
+                        </li>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#" class="tanajil-menu-item-title" title="大宗礼品">大宗礼品</a>
+
+                        </li>
+                        <li class="menu-item  menu-item-has-children">
+                            <a href="#" class="tanajil-menu-item-title" title="活动咨询">活动咨询</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
-<h1>商品列表</h1>
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>编号</th>
-            <th>名称</th>
-            <th>价格</th>
-            <th>描述</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.ProductID</td>
-                <td>@item.ProductName</td>
-                <td>@item.ProductPrice</td>
-                <td>@item.ProductDesc</td>
-            </tr>
-        }
+    </header>
+<!-- 缩放显示 -->
+<div class="header-device-mobile">
+    <div class="wapper">
+        <!-- LOGO -->
+        <div class="item mobile-logo">
+            <div class="logo">
+                <a href="#">
+                    <img src="images/logo.png" alt="img">
+                </a>
+            </div>
+        </div>
+        <!-- 搜索 -->
+        <div class="item item mobile-search-box has-sub">
+            <a href="#">
+                <span class="icon">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+            </a>
+            <div class="block-sub">
+                <a href="#" class="close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+                <div class="header-searchform-box">
+                    <form class="header-searchform">
+                        <div class="searchform-wrap">
+                            <input type="text" class="search-input" placeholder="搜索">
+                            <input type="submit" class="submit button" value="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 我的 -->
+        <div class="item mobile-settings-box has-sub">
+            <a href="#">
+                <span class="icon">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                </span>
+            </a>
+            <div class="block-sub">
+                <a href="#" class="close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+                <div class="block-sub-item">
+                    <h5 class="block-item-title">我的</h5>
+                    <form class="currency-form tanajil-language">
+                        <ul class="tanajil-language-wrap">
+                            <li>
+                                <a href="#">
+                                    <i class="iconfont">&#xe698;</i>购物车
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="iconfont">&#xe6a0;</i>收藏夹
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <a href="#">
+                                        <i class="iconfont">&#xe6ba;</i>登录后台
+                                    </a>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-    </tbody>
+        <!-- 菜单按钮 -->
+        <div class="item menu-bar">
+            <a class=" mobile-navigation  menu-toggle" href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+    </div>
+</div>
+<!---------------------------------------------------------------轮播---------------------------------------------->
+<section>
+    <div class="container">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="images/轮播1.jpg" alt="...">
+                </div>
+                <div class="item">
+                    <img src="images/轮播3.png" alt="...">
+                </div>
+                <div class="item">
+                    <img src="images/轮播4.png" alt="...">
+                </div>
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</section>
+<!---------------------------------------------------------------服饰区---------------------------------------------->
+<section class="clothing" id="clothing">
+    <div class="container">
+        <div class="big-title">
+            <h2>服饰区</h2>
+        </div>
+        <div class="row ry">
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
 
-</table>
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+        </div>
+
+        <div class="row ry">
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+        </div>
+        <a href="#" class="read-more">
+            More <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</section>
+<!---------------------------------------------------------------数码区---------------------------------------------->
+<section class="clothing" id="digital">
+    <div class="container">
+        <div class="big-title">
+            <h2>数码区</h2>
+        </div>
+        <div class="row ry">
+            <a href="#">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+            <a href="#">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+        </div>
+
+        <div class="row ry">
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+        </div>
+        <a href="#" class="read-more">
+            More <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</section>
+<!---------------------------------------------------------------家居区---------------------------------------------->
+<section class="clothing" id="household">
+    <div class="container">
+        <div class="big-title">
+            <h2>家居区</h2>
+        </div>
+        <div class="row ry">
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+        </div>
+
+        <div class="row ry">
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+        </div>
+        <a href="#" class="read-more">
+            More <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</section>
+<!---------------------------------------------------------------美妆区---------------------------------------------->
+<section class="clothing" id="makeup">
+    <div class="container">
+        <div class="big-title">
+            <h2>美妆区</h2>
+        </div>
+        <div class="row ry">
+            <a href="#">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+        </div>
+
+        <div class="row ry">
+            <a href="#">
+                <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+        </div>
+        <a href="#" class="read-more">
+            More <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</section>
+<!---------------------------------------------------------------美食区---------------------------------------------->
+<section class="clothing" id="delicacy">
+    <div class="container">
+        <div class="big-title">
+            <h2>美食区</h2>
+        </div>
+        <div class="row ry">
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+        </div>
+
+        <div class="row ry">
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+        </div>
+        <a href="#" class="read-more">
+            More <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</section>
+<!---------------------------------------------------------------母婴区---------------------------------------------->
+<section class="clothing" id="motherchild">
+    <div class="container">
+        <div class="big-title">
+            <h2>母婴区</h2>
+        </div>
+        <div class="row ry">
+
+            <a href="#">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+        </div>
+        <div class="row ry">
+            <a href="#">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                    <div class="clothing-box">
+                        <div class="listing-container">
+                            <div class="listing-image">
+                                <img src="images/衣服.jpg" alt="">
+                            </div>
+                            <div class="listing-content">
+                                <div class="inner">
+                                    <a href="#" class="btn-main btn-effect pull-right" title="收藏">
+                                        <i class="iconfont">&#xe6a0;</i>
+                                    </a>
+                                    <a href="#" class="btn-main btn-effect" title="收藏加入购物车">
+                                        <i class="iconfont">&#xe698;</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="price"><span class="shangyin">￥139 米白色羽绒服</span></div>
+                </div>
+            </a>
+        </div>
+        <a href="#" class="read-more">
+            More <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</section>
+<div class="menu">
+    <div class="icon" tabindex="1">
+        <a href="#top" data-toggle="tooltip" data-placement="right" title="返回顶部">
+            <img src="images/顶部.png" alt=""
+                 width="30" height="30">
+        </a>
+    </div>
+    <div class="icon" tabindex="2">
+        <a href="#clothing" data-toggle="tooltip" data-placement="right" title="服装">
+            <img src="images/服装.png" alt=""
+                 width="30" height="30">
+        </a>
+    </div>
+    <div class="icon" tabindex="3">
+        <a href="#digital" data-toggle="tooltip" data-placement="right" title="数码">
+            <img src="images/数码.png" alt=""
+                 width="30" height="30">
+        </a>
+    </div>
+    <div class="icon" tabindex="4">
+        <a href="#household" data-toggle="tooltip" data-placement="right" title="家居">
+            <img src="images/家居.png" alt=""
+                 width="30" height="30">
+        </a>
+    </div>
+    <div class="icon" tabindex="5">
+        <a href="#makeup" data-toggle="tooltip" data-placement="right" title="美妆">
+            <img src="images/美妆.png" alt=""
+                 width="35" height="35">
+        </a>
+    </div>
+    <div class="icon" tabindex="6">
+        <a href="#delicacy" data-toggle="tooltip" data-placement="right" title="美食">
+            <img src="images/美食.png" alt=""
+                 width="31" height="31">
+        </a>
+    </div>
+    <div class="icon" tabindex="7">
+        <a href="#motherchild" data-toggle="tooltip" data-placement="right" title="母婴">
+            <img src="images/母婴.png"
+                 alt="" width="40" height="30">
+        </a>
+    </div>
+    <div class="icon" tabindex="8">
+        <a href="#bottom" data-toggle="tooltip" data-placement="right" title="返回底部">
+            <img src="images/底部.png" alt=""
+                 width="32" height="32">
+        </a>
+    </div>
+</div>
+
+@section Scripts{
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+}

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using WebAppAPI.Models;
 
 namespace WebAppAPI.Controllers
@@ -14,31 +15,34 @@ namespace WebAppAPI.Controllers
     public class UsersController : ControllerBase
     {
         private readonly ChangeDBContext _context;
-
-        public UsersController(ChangeDBContext context)
+        private readonly ILogger<UsersController> _logger;
+        public UsersController(ChangeDBContext context, ILogger<UsersController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
-        {
-            return await _context.Users.ToListAsync();
-        }
+        //public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
+        //{
+        //    return await _context.Users.ToListAsync();
+        //}
 
         // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUsers(int id)
+        [HttpGet]
+        public async Task<ActionResult<Users>> GetUsers(string UserName)
         {
-            var users = await _context.Users.FindAsync(id);
-
-            if (users == null)
+            _logger.LogInformation("调用成功：UserName=" + UserName);
+            var users = await _context.Users.Where(u => u.UserName.Contains(UserName)).ToListAsync();
+            if (users.Count == 0)
             {
-                return NotFound();
+                _logger.LogInformation("未查到记录..." );
+                return null;
+                //return NotFound();
             }
-
-            return users;
+            
+            return users[0];
         }
 
         // PUT: api/Users/5
