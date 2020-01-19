@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApp.Models;
+using Microsoft.AspNetCore.Http;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace WebApp.Controllers
 {
@@ -18,12 +21,18 @@ namespace WebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
+        {
+            HttpClient httpClient = new HttpClient();
+            var result = await httpClient.GetStringAsync("http://localhost:8080/api/Products");
+            List<Product> list = JsonConvert.DeserializeObject<List<Product>>(result);
+            return View(list);
+        }
+        public IActionResult Privacy()
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        public IActionResult Login()
         {
             return View();
         }
