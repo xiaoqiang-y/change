@@ -30,6 +30,7 @@ namespace WebApp.Controllers
                 string pagePwd = MD5Encrypt.Encrypt(users.Pwd);
                 if (recvUser.UserName == users.UserName && recvUser.Pwd.ToLower() == pagePwd.ToLower())
                 {
+                    HttpContext.Session.SetString("LoginUser", recvUser.UserName);//缓存当前登录用户
                     return RedirectToAction("Index","Home");
                 }
             }            
@@ -63,6 +64,14 @@ namespace WebApp.Controllers
             {
                 return View();
             }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register()
+        {
+            
+                return View();
+            
         }
 
         // GET: Login/Edit/5

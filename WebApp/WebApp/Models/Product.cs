@@ -19,7 +19,7 @@ namespace WebApp.Models
         public decimal MarketPrice { get; set; }
         public decimal Price { get; set; }
         public string Content { get; set; }
-        public DateTime? PostTime { get; set; }
+        public DateTime PostTime { get; set; }
         public int Stock { get; set; }
 
         public virtual Category Category { get; set; }

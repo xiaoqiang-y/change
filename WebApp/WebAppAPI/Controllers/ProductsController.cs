@@ -26,21 +26,53 @@ namespace WebAppAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProduct()
         {
-            return await _context.Product.ToListAsync();
+            var products = await _context.Product.Select(p => new Product
+            {
+                ProductId = p.ProductId,
+                Title = p.Title,
+                MarketPrice = p.MarketPrice,
+                Price = p.Price,
+                CategoryId = p.CategoryId
+            }).ToListAsync();
+            return products;
+            //return await _context.Product.ToListAsync();
         }
+        //public async Task<ActionResult<IEnumerable<IGrouping<int, Product>>>> GetProduct()
+        //{
+        //    var products = await _context.Product.Select(p => new Product
+        //    {
+        //        ProductId = p.ProductId,
+        //        Title = p.Title,
+        //        MarketPrice = p.MarketPrice,
+        //        Price = p.Price,
+        //        CategoryId = p.CategoryId
+        //    }).GroupBy(p => p.CategoryId).ToListAsync();
+        //    return products;
+        //    //return await _context.Product.ToListAsync();
+        //}
 
         // GET: api/Products/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<IEnumerable<Product>>> GetProduct(int id)
         {
-            var product = await _context.Product.FindAsync(id);
-
-            if (product == null)
+            _logger.LogInformation("调用成功：CategoryId=" + id);
+            var products = await _context.Product.Select(p => new Product
             {
-                return NotFound();
+                ProductId = p.ProductId,
+                CategoryId=p.CategoryId,
+                Title = p.Title,
+                MarketPrice = p.MarketPrice,
+                Price = p.Price,
+                Photo = p.Photo
+            }).ToListAsync();
+
+            if (products == null)
+            {
+                return null;
+                //return NotFound();
             }
 
-            return product;
+            return products;
         }
 
         // PUT: api/Products/5

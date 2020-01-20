@@ -23,6 +23,7 @@ namespace WebAppAPI.Models
         public int Stock { get; set; }
 
         public virtual Category Category { get; set; }
+        
         public virtual ICollection<Appraise> Appraise { get; set; }
         public virtual ICollection<Favorite> Favorite { get; set; }
         public virtual ICollection<OrdersDetail> OrdersDetail { get; set; }

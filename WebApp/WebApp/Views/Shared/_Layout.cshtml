@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Change商城</title>
     @*<title></title>*@
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/chosen.min.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/mobile-menu.css">
-    <link rel="stylesheet" href="fonts/flaticon/flaticon.css">
-    <link rel="stylesheet" href="css/font.css">
-    <link rel="stylesheet" href="css/首页.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/chosen.min.css">
+    <link rel="stylesheet" href="~/css/animate.min.css">
+    <link rel="stylesheet" href="~/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/css/mobile-menu.css">
+    <link rel="stylesheet" href="~/fonts/flaticon/flaticon.css">
+    <link rel="stylesheet" href="~/css/font.css">
+    <link rel="stylesheet" href="~/css/首页.css">
 </head>
 <body  class="home">
     <!-- 头 -->
@@ -23,9 +23,18 @@
                 <div class="top-bar-left">
                     <div class="header-message login">
                         欢迎来到Change商城
-                        <a href="#">登录</a>
-                        <span>|</span>
-                        <a href="#">注册</a>
+                        @if (@ViewBag.LoginName != null)
+                        {
+                            <a href="#">@ViewBag.LoginName</a>
+                            <span>|</span>
+                            <a href="@string.Format("/home/index?Exit={0}","Exit")">退出</a>
+                        }
+                        else
+                        {
+                            <a href="~/Login">登录</a>
+                            <span>|</span>
+                            <a href="/Login/Register">注册</a>
+                        }
                     </div>
                 </div>
                 <div class="top-bar-right">
@@ -60,7 +69,7 @@
                     <div class="col-lg-4 col-sm-5 col-md-4 col-xs-7 header-element">
                         <div class="logo">
                             <a href="#">
-                                <img src="images/logo.png" alt="img">
+                                <img src="~/images/logo.png" alt="img">
                             </a>
                         </div>
                     </div>
@@ -136,15 +145,15 @@
                 </div>
             </div>
         </footer>
-        <script src="js/jquery-3.4.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery-1.12.4.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery-ui.min.js"></script>
-        <script src="js/mobile-menu.js"></script>
-        <script src="js/chosen.min.js"></script>
-        <script src="js/owl.thumbs.min.js"></script>
-        <script src="js/frontend-plugin.js"></script>
+        <script src="~/js/jquery-3.4.1.min.js"></script>
+        <script src="~/js/bootstrap.min.js"></script>
+        <script src="~/js/jquery-1.12.4.min.js"></script>
+        <script src="~/js/owl.carousel.min.js"></script>
+        <script src="~/js/jquery-ui.min.js"></script>
+        <script src="~/js/mobile-menu.js"></script>
+        <script src="~/js/chosen.min.js"></script>
+        <script src="~/js/owl.thumbs.min.js"></script>
+        <script src="~/js/frontend-plugin.js"></script>
         @RenderSection("Scripts", required: false)
 </body>
 </html>

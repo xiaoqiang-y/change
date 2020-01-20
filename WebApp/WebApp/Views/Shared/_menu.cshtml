@@ -23,21 +23,15 @@
                             </a>
                             <span class="toggle-submenu"></span>
                             <ul role="menu" class=" submenu">
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">上衣</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">裤子</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">裙子</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">帽子</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">鞋子</a>
-                                </li>
+                                @foreach (var item in @ViewData["Category"]  as IEnumerable<Category>)
+                                {
+                                    @if (@item.ParentId == 3)
+                                    {
+                                        <li class="menu-item">
+                                            <a href=@string.Format("/Home/ProductCategory/?CategoryId={0}&CategoryName=服装",@item.CategoryId ) class="tanajil-item-title">@item.CateName</a>
+                                        </li>
+                                    }
+                                }                                
                             </ul>
                         </li>
 
@@ -47,21 +41,15 @@
                             </a>
                             <span class="toggle-submenu"></span>
                             <ul role="menu" class=" submenu">
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">手机</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">电脑</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">配件</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">智能硬件</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">数码</a>
-                                </li>
+                                @foreach (var item in @ViewData["Category"] as IEnumerable<Category>)
+                                {
+                                    @if (@item.ParentId == 4)
+                                    {
+                                        <li class="menu-item">
+                                            <a href=@string.Format("/Home/ProductCategory/?CategoryId={0}&CategoryName=数码",@item.CategoryId ) class="tanajil-item-title">@item.CateName</a>
+                                        </li>
+                                    }
+                                }
                             </ul>
                         </li>
 
@@ -71,24 +59,15 @@
                             </a>
                             <span class="toggle-submenu"></span>
                             <ul role="menu" class=" submenu">
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">家具</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">厨具</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">家纺</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">生活用品</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">灯具</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">卫浴</a>
-                                </li>
+                                @foreach (var item in @ViewData["Category"] as IEnumerable<Category>)
+                                {
+                                    @if (@item.ParentId == 6)
+                                    {
+                                        <li class="menu-item">
+                                            <a href=@string.Format("/Home/ProductCategory/?CategoryId={0}&CategoryName=家具",@item.CategoryId ) class="tanajil-item-title">@item.CateName</a>
+                                        </li>
+                                    }
+                                }
                             </ul>
                         </li>
 
@@ -98,21 +77,15 @@
                             </a>
                             <span class="toggle-submenu"></span>
                             <ul role="menu" class=" submenu">
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">护肤</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">彩妆</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">洗护发</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">身体护理</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">洁面</a>
-                                </li>
+                                @foreach (var item in @ViewData["Category"] as IEnumerable<Category>)
+                                {
+                                    @if (@item.ParentId == 7)
+                                    {
+                                        <li class="menu-item">
+                                            <a href=@string.Format("/Home/ProductCategory/?CategoryId={0}&CategoryName=美妆",@item.CategoryId ) class="tanajil-item-title">@item.CateName</a>
+                                        </li>
+                                    }
+                                }
                             </ul>
                         </li>
 
@@ -122,21 +95,15 @@
                             </a>
                             <span class="toggle-submenu"></span>
                             <ul role="menu" class=" submenu">
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">茶叶</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">零食</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">咖啡</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">水果</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">巧克力</a>
-                                </li>
+                                @foreach (var item in @ViewData["Category"] as IEnumerable<Category>)
+                                {
+                                    @if (@item.ParentId == 5)
+                                    {
+                                        <li class="menu-item">
+                                            <a href=@string.Format("/Home/ProductCategory/?CategoryId={0}&CategoryName=美食",@item.CategoryId ) class="tanajil-item-title">@item.CateName</a>
+                                        </li>
+                                    }
+                                }
                             </ul>
                         </li>
 
@@ -146,21 +113,15 @@
                             </a>
                             <span class="toggle-submenu"></span>
                             <ul role="menu" class=" submenu">
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">奶粉</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">辅食</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">玩具</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">喂养</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#" class="tanajil-item-title">洗护</a>
-                                </li>
+                                @foreach (var item in @ViewData["Category"] as IEnumerable<Category>)
+                                {
+                                    @if (@item.ParentId == 8)
+                                    {
+                                        <li class="menu-item">
+                                            <a href=@string.Format("/Home/ProductCategory/?CategoryId={0}&CategoryName=母婴",@item.CategoryId ) class="tanajil-item-title">@item.CateName</a>
+                                        </li>
+                                    }
+                                }
                             </ul>
                         </li>
 

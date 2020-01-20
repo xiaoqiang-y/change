@@ -13,7 +13,7 @@ namespace WebApp.Models
 
         public int CategoryId { get; set; }
         public string CateName { get; set; }
-        public int? ParentId { get; set; }
+        public int ParentId { get; set; }
 
         public virtual Category Parent { get; set; }
         public virtual ICollection<Category> InverseParent { get; set; }
