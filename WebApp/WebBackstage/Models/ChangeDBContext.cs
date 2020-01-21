@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace WebAppAPI.Models
+namespace WebBackstage.Models
 {
     public partial class ChangeDBContext : DbContext
     {
@@ -17,6 +17,7 @@ namespace WebAppAPI.Models
 
         public virtual DbSet<AdminUser> AdminUser { get; set; }
         public virtual DbSet<Appraise> Appraise { get; set; }
+        public virtual DbSet<Car> Car { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Delivery> Delivery { get; set; }
         public virtual DbSet<Favorite> Favorite { get; set; }
@@ -27,14 +28,14 @@ namespace WebAppAPI.Models
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
-//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//        {
-//            if (!optionsBuilder.IsConfigured)
-//            {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-//                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=ChangeDB; Integrated Security=True;");
-//            }
-//        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=ChangeDB; Integrated Security=True;");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -73,6 +74,21 @@ namespace WebAppAPI.Models
                     .HasForeignKey(d => d.UsersId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Appraise__UsersI__52593CB8");
+            });
+
+            modelBuilder.Entity<Car>(entity =>
+            {
+                entity.Property(e => e.AddDay).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.Car)
+                    .HasForeignKey(d => d.ProductId)
+                    .HasConstraintName("FK__Car__ProductId__73BA3083");
+
+                entity.HasOne(d => d.Users)
+                    .WithMany(p => p.Car)
+                    .HasForeignKey(d => d.UsersId)
+                    .HasConstraintName("FK__Car__UsersId__74AE54BC");
             });
 
             modelBuilder.Entity<Category>(entity =>

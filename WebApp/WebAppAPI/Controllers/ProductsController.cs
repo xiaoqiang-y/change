@@ -32,7 +32,8 @@ namespace WebAppAPI.Controllers
                 Title = p.Title,
                 MarketPrice = p.MarketPrice,
                 Price = p.Price,
-                CategoryId = p.CategoryId
+                CategoryId = p.CategoryId,
+                Photo = p.Photo
             }).ToListAsync();
             return products;
             //return await _context.Product.ToListAsync();
@@ -53,26 +54,37 @@ namespace WebAppAPI.Controllers
 
         // GET: api/Products/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProduct(int id)
+        public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            _logger.LogInformation("调用成功：CategoryId=" + id);
-            var products = await _context.Product.Select(p => new Product
-            {
-                ProductId = p.ProductId,
-                CategoryId=p.CategoryId,
-                Title = p.Title,
-                MarketPrice = p.MarketPrice,
-                Price = p.Price,
-                Photo = p.Photo
-            }).ToListAsync();
+            _logger.LogInformation("调用成功：ProductId=" + id);
+            var product = await _context.Product.FindAsync(id);
 
-            if (products == null)
+            if (product == null)
             {
                 return null;
                 //return NotFound();
             }
 
-            return products;
+            return product;
+
+            //var products = await _context.Product.Select(p => new Product
+            //{
+            //    ProductId = p.ProductId,
+            //    CategoryId=p.CategoryId,
+            //    Title = p.Title,
+            //    MarketPrice = p.MarketPrice,
+            //    Price = p.Price,
+            //    Photo = p.Photo,
+            //    Appraise = p.Appraise
+            //}).ToListAsync();
+
+            //if (products == null)
+            //{
+            //    return null;
+            //    //return NotFound();
+            //}
+
+            //return products;
         }
 
         // PUT: api/Products/5

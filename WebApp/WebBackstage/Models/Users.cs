@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebAppAPI.Models
+namespace WebBackstage.Models
 {
     public partial class Users
     {
         public Users()
         {
             Appraise = new HashSet<Appraise>();
+            Car = new HashSet<Car>();
             Delivery = new HashSet<Delivery>();
             Favorite = new HashSet<Favorite>();
         }
@@ -21,6 +22,7 @@ namespace WebAppAPI.Models
 
         public virtual Delivery DeliveryNavigation { get; set; }
         public virtual ICollection<Appraise> Appraise { get; set; }
+        public virtual ICollection<Car> Car { get; set; }
         public virtual ICollection<Delivery> Delivery { get; set; }
         public virtual ICollection<Favorite> Favorite { get; set; }
     }

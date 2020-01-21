@@ -23,7 +23,7 @@ namespace WebAppAPI.Controllers
         }
 
         // GET: api/Users
-        [HttpGet]
+        //[HttpGet]
         //public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
         //{
         //    return await _context.Users.ToListAsync();
@@ -33,7 +33,7 @@ namespace WebAppAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<Users>> GetUsers(string UserName)
         {
-            _logger.LogInformation("调用成功：UserName=" + UserName);
+            _logger.LogInformation("查询用户调用成功：UserName=" + UserName);
             var users = await _context.Users.Where(u => u.UserName.Contains(UserName)).ToListAsync();
             if (users.Count == 0)
             {
@@ -76,17 +76,29 @@ namespace WebAppAPI.Controllers
 
             return NoContent();
         }
-
+        //public async Task<ActionResult<Users>> PostUsers()
+        //{
+        //    _logger.LogInformation("注册调用成功");
+        //    return null;
+        //}
         // POST: api/Users
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
         public async Task<ActionResult<Users>> PostUsers(Users users)
         {
-            _context.Users.Add(users);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUsers", new { id = users.UsersId }, users);
+            _logger.LogInformation("注册调用成功：UserName=" + users.UserName);
+            var result = await _context.Users.Where(u => u.UserName.Contains(users.UserName)).ToListAsync();
+            if (result.Count == 0)
+            {
+                _context.Users.Add(users);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("GetUsers", new { id = users.UsersId }, users);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         // DELETE: api/Users/5

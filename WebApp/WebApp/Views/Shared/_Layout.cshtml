@@ -14,8 +14,11 @@
     <link rel="stylesheet" href="~/fonts/flaticon/flaticon.css">
     <link rel="stylesheet" href="~/css/font.css">
     <link rel="stylesheet" href="~/css/首页.css">
+    <link rel="stylesheet" href="~/css/商品分类.css">
+    <link rel="stylesheet" href="~/css/商品详情.css">
+    <link rel="stylesheet" href="~/css/促销活动.css">
 </head>
-<body  class="home">
+<body class="home">
     <!-- 头 -->
     <header class="header homepage" id="top">
         <div class="top-bar">
@@ -33,7 +36,7 @@
                         {
                             <a href="~/Login">登录</a>
                             <span>|</span>
-                            <a href="/Login/Register">注册</a>
+                            <a href="~/Register">注册</a>
                         }
                     </div>
                 </div>
@@ -76,10 +79,10 @@
 
                     <div class="col-lg-8 col-sm-7 col-md-8 col-xs-5">
                         <div class="block-search-block">
-                            <form class="form-search form-search-width-category">
+                            <form class="form-search form-search-width-category" action="~/Home/ProductSearch" method="get">
                                 <div class="form-content">
                                     <div class="inner">
-                                        <input type="text" class="input" name="s" value="" placeholder="搜索">
+                                        <input type="text" class="input" name="Title" value="" placeholder="搜索">
                                     </div>
                                     <button class="btn-search" type="submit">
                                         <span class="icon-search"></span>
@@ -97,63 +100,48 @@
         }
 
     </header>
-        @*<header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebApp</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>*@
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
+    @*<div class="container">
+        <main role="main" class="pb-3">*@
+    @RenderBody()
+    @*</main>
+        </div>*@
 
-        <footer id="bottom">
-            <div class="bot-img">
-                <div class="footer">
-                    <div class="footerinner">
-                        <div class="footerinfo container">
-                            <div class="footerinfoTop">
-                                <p>
-                                    关于Change：<a href="#">帮助中心</a> <a href="#">开放平台</a> <a href="#">联系我们</a> <a href="#">网站合作</a> <a href="#">法律声明</a> <a href="#">知识产权</a> <a href="#">廉正举报</a>
+    <footer id="bottom">
+        <div class="bot-img">
+            <div class="footer">
+                <div class="footerinner">
+                    <div class="footerinfo container">
+                        <div class="footerinfoTop">
+                            <p>
+                                关于Change：<a href="#">帮助中心</a> <a href="#">开放平台</a> <a href="#">联系我们</a> <a href="#">网站合作</a> <a href="#">法律声明</a> <a href="#">知识产权</a> <a href="#">廉正举报</a>
 
-                                </p>
-                                <p>湖南省长沙市长沙县万家丽北路水渡河100号</p>
-                                <p>违法和不良信息举报电话：0731-xxxxxxxx</p>
-                                <p>商务合作邮箱：<a href="" mailto:# "">xxxxxxxx@qq.com</a></p>
-                                <p><a href="#">Change用户协议</a> | <a href="#">Change平台交易总则</a> | <a href="#">隐私政策</a></p>
-                                <p>©2020 Change商城 Change.com</p>
-                            </div>
+                            </p>
+                            <p>湖南省长沙市长沙县万家丽北路水渡河100号</p>
+                            <p>违法和不良信息举报电话：0731-xxxxxxxx</p>
+                            <p>商务合作邮箱：<a href="" mailto:# "">xxxxxxxx@qq.com</a></p>
+                            <p><a href="#">Change用户协议</a> | <a href="#">Change平台交易总则</a> | <a href="#">隐私政策</a></p>
+                            <p>©2020 Change商城 Change.com</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-        <script src="~/js/jquery-3.4.1.min.js"></script>
-        <script src="~/js/bootstrap.min.js"></script>
-        <script src="~/js/jquery-1.12.4.min.js"></script>
-        <script src="~/js/owl.carousel.min.js"></script>
-        <script src="~/js/jquery-ui.min.js"></script>
-        <script src="~/js/mobile-menu.js"></script>
-        <script src="~/js/chosen.min.js"></script>
-        <script src="~/js/owl.thumbs.min.js"></script>
-        <script src="~/js/frontend-plugin.js"></script>
-        @RenderSection("Scripts", required: false)
+        </div>
+    </footer>
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+    <script src="~/js/jquery-1.12.4.min.js"></script>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/isotope.min.js"></script>
+    <script src="~/js/jquery-ui.min.js"></script>
+    <script src="~/js/mobile-menu.js"></script>
+    <script src="~/js/chosen.min.js"></script>
+    <script src="~/js/slick.js"></script>
+    <script src="~/js/jquery.elevateZoom.min.js"></script>
+    <script src="~/js/fancybox/source/jquery.fancybox.js"></script>
+    <script src="~/js/owl.thumbs.min.js"></script>
+    <script src="~/js/frontend-plugin.js"></script>
+    <script src="~/js/vue.min.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
