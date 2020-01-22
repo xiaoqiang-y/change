@@ -30,6 +30,18 @@ namespace WebAppAPI.Controllers
         //}
 
         // GET: api/Users/5
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Users>> GetUsers(int id)
+        //{
+        //    var users = await _context.Users.FindAsync(id);
+
+        //    if (users == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return users;
+        //}
         [HttpGet]
         public async Task<ActionResult<Users>> GetUsers(string UserName)
         {
@@ -37,11 +49,11 @@ namespace WebAppAPI.Controllers
             var users = await _context.Users.Where(u => u.UserName.Contains(UserName)).ToListAsync();
             if (users.Count == 0)
             {
-                _logger.LogInformation("未查到记录..." );
+                _logger.LogInformation("未查到记录...");
                 return null;
                 //return NotFound();
             }
-            
+
             return users[0];
         }
 

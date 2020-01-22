@@ -31,6 +31,7 @@ namespace WebApp.Controllers
                 if (recvUser.UserName == users.UserName && recvUser.Pwd.ToLower() == pagePwd.ToLower())
                 {
                     HttpContext.Session.SetString("LoginUser", recvUser.UserName);//缓存当前登录用户
+                    HttpContext.Session.SetString("LoginUserId", recvUser.UsersId.ToString());//缓存当前登录用户Id
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -44,7 +45,31 @@ namespace WebApp.Controllers
         }
 
         // GET: Login/Create   
-       
+        // GET: Register/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Register/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(Users user)
+        {
+            HttpClient client = new HttpClient();
+
+            user.Pwd = MD5Encrypt.Encrypt(user.Pwd);
+            var jsonString = JsonConvert.SerializeObject(user);
+            HttpContent httpContent = new StringContent(jsonString);
+            httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var resMsg = await client.PostAsync("http://localhost:8080/api/Users", httpContent);
+            if (resMsg.StatusCode.ToString() == "Created")
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            return View();
+        }
 
         // GET: Login/Edit/5
         public ActionResult Edit(int id)

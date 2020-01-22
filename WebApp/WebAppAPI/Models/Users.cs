@@ -10,6 +10,7 @@ namespace WebAppAPI.Models
             Appraise = new HashSet<Appraise>();
             Delivery = new HashSet<Delivery>();
             Favorite = new HashSet<Favorite>();
+            Car = new HashSet<Car>();
         }
 
         public int UsersId { get; set; }
@@ -17,11 +18,12 @@ namespace WebAppAPI.Models
         public string Pwd { get; set; }
         public string Email { get; set; }
         public string Nick { get; set; }
-        public int? DeliveryId { get; set; }
+        public int DeliveryId { get; set; }
 
         public virtual Delivery DeliveryNavigation { get; set; }
         public virtual ICollection<Appraise> Appraise { get; set; }
         public virtual ICollection<Delivery> Delivery { get; set; }
         public virtual ICollection<Favorite> Favorite { get; set; }
+        public virtual ICollection<Car> Car { get; set; }
     }
 }

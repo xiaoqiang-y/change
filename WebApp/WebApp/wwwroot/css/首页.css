@@ -6,6 +6,10 @@ body {
     overflow-x: hidden;
 }
 
+label {
+	font-weight: normal;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	line-height: 1.428;
 	font-weight: normal;
@@ -29,6 +33,9 @@ h5 {
 }
 h6 {
 	font-size: 16px;
+}
+p {
+	margin-bottom: 20px;
 }
 
 a {
@@ -63,7 +70,7 @@ ol ul {
 }
 
 input[type="text"],
-input[type="search"] {
+input[type="search"],input[type="email"],input[type="password"]{
     border: 1px solid #eeeeee;
     padding: 7px 20px;
     max-width: 100%;
@@ -71,14 +78,14 @@ input[type="search"] {
 }
 
 input[type="text"],
-input[type="search"] {
+input[type="search"],input[type="email"],input[type="password"]{
     height: 42px;
     border-radius: 4px;
 }
 
 .button,
 button,
-input[type="submit"] {
+input[type="submit"]{
     display: inline-block;
     padding: 10px 20px;
     color: #fff;
@@ -541,7 +548,7 @@ input[type="submit"],
 }
 
 .vertical-menu .menu-item a:hover {
-    color: #bf1b1b;
+    color: #3399fe;
 }
 
 .vertical-menu .menu-item:last-child a {

@@ -15,8 +15,8 @@ namespace WebAppAPI.Controllers
     public class NewsController : ControllerBase
     {
         private readonly ChangeDBContext _context;
-        private readonly ILogger<UsersController> _logger;
-        public NewsController(ChangeDBContext context, ILogger<UsersController> logger)
+        private readonly ILogger<NewsController> _logger;
+        public NewsController(ChangeDBContext context, ILogger<NewsController> logger)
         {
             _context = context;
             _logger = logger;

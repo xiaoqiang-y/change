@@ -23,5 +23,6 @@ namespace WebApp.Models
         public virtual ICollection<Appraise> Appraise { get; set; }
         public virtual ICollection<Delivery> Delivery { get; set; }
         public virtual ICollection<Favorite> Favorite { get; set; }
+        public virtual ICollection<Car> Car { get; set; }
     }
 }

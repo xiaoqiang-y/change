@@ -27,6 +27,7 @@ namespace WebApp.Controllers
             if (Exit == "Exit")
             {
                 HttpContext.Session.Remove("LoginUser");
+                HttpContext.Session.Remove("LoginUserId");
             }
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("LoginUser")))
             {

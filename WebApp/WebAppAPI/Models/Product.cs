@@ -11,6 +11,7 @@ namespace WebAppAPI.Models
             Favorite = new HashSet<Favorite>();
             OrdersDetail = new HashSet<OrdersDetail>();
             Photo = new HashSet<Photo>();
+            Car = new HashSet<Car>();
         }
 
         public int ProductId { get; set; }
@@ -27,5 +28,6 @@ namespace WebAppAPI.Models
         public virtual ICollection<Favorite> Favorite { get; set; }
         public virtual ICollection<OrdersDetail> OrdersDetail { get; set; }
         public virtual ICollection<Photo> Photo { get; set; }
+        public virtual ICollection<Car> Car { get; set; }
     }
 }

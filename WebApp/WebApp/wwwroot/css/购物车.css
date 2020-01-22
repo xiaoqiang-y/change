@@ -1,4 +1,115 @@
+#seat-1 {
+    width: 100%;
+    margin: 280px auto 0 auto;
+    position: absolute;
+    top: 80px;
+    left: 0px;
+}
 
+#seat-1 ul li {
+    text-align: center;
+}
+
+#seat-1 fieldset {
+    background: rgb(248, 244, 9);
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+    position: absolute;
+}
+
+#seat-1 fieldset:not(:first-of-type) {
+    display: none;
+}
+
+#seat-1 .action-button {
+    width: 100px;
+    background: #3399fe;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#seat-1 .action-button:hover,
+#seat-1 .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #3399fe;
+}
+
+.fs-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    counter-reset: step;
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: rgb(141, 138, 138);
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 33.33%;
+    float: left;
+    position: relative;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 20px;
+    line-height: 20px;
+    display: block;
+    font-size: 10px;
+    color: #333;
+    background: rgb(188, 190, 188);
+    border-radius: 3px;
+    margin: 0 auto 5px auto;
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: rgb(188, 190, 188);
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1;
+}
+
+#progressbar li:first-child:after {
+    content: none;
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #3399fe;
+    color: white;
+}
+
+#shopping-cart{
+	margin-top: 80px;
+}
 .breadcrumb {
 	padding: 34px 0 30px;
 	background: #ffffff;
@@ -127,7 +238,7 @@ table tr:last-child td, table tr:last-child th {
 }
 .shop_table td.product-remove a {
 	display: block;
-	font-size: 20px
+	font-size: 16px
 }
 .cart-form .product-remove a:before {
 	font-family: FontAwesome;
@@ -174,7 +285,6 @@ table tr:last-child td, table tr:last-child th {
 .cart-form .shop_table .product-quantity .quantity {
 	display: block;
 	border: 1px solid #f1f1f1;
-	
 	padding: 0 6px;
 	width: 75px;
 	text-align: center;
@@ -183,6 +293,12 @@ table tr:last-child td, table tr:last-child th {
 	border: none;
 }
 .cart-form .shop_table .product-price {
+	width: 20%;
+	font-size: 20px;
+	color: #111;
+	font-weight: 800;
+}
+.cart-form .shop_table .product-piece {
 	width: 20%;
 	font-size: 20px;
 	color: #111;
@@ -258,13 +374,28 @@ table tr:last-child td, table tr:last-child th {
     padding-bottom: 15px;
 }
 
+@media (max-width: 1199px){
+	#seat-1{
+		margin-top: 200px;
+	}
+}
+
+@media (max-width: 1024px) {
+	#seat-1{
+		margin-top: 200px;
+	}
+}
+
 @media (max-width: 991px) {
     .cart-form .shop_table tbody > tr > td {
         padding: 10px;
     }
     .cart-form .shop_table .product-thumbnail {
         padding-left: 10px;
-    }
+	}
+	#seat-1{
+		margin-top: 200px;
+	}
 }
 
 @media (max-width: 767px) {
@@ -294,12 +425,19 @@ table tr:last-child td, table tr:last-child th {
 	.cart-form .shop_table .product-quantity .quantity {
 		margin: 0 auto;
 	}
+	
 	.breadcrumb {
 		padding: 25px 0 20px;
     }
-    .remove{
+    .product-remove .remove{
         margin-left: 10px;
-    }
+	}
+	#seat-1{
+		margin-top: 100px;
+	}
+	.bank-name{
+		display: none;
+	}
 	
 }
 
@@ -320,3 +458,36 @@ button,.button:hover{
 }
 
 
+.list-group{
+	margin-top: 120px;
+}
+.list-group,.remarks{
+	padding: 0 15px;
+}
+.list-group-item .phone::before{
+    content: "(";
+}
+.list-group-item .phone::after{
+    content: ")";
+}
+
+.fa-check-circle{
+	color: #3399fe;
+}
+
+/* .pay-way{
+	border: 1px solid #eee;
+	padding: 15px 10px;
+	border-radius: 4px;
+} */
+#order-info1 .shop_table tbody > tr > td>{
+	padding: 30px 10px;
+	text-align: center;
+}
+
+ 
+
+
+
+
+ 

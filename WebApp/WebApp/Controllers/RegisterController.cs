@@ -28,7 +28,7 @@ namespace WebApp.Controllers
             HttpContent httpContent = new StringContent(jsonString);
             httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             var resMsg = await client.PostAsync("http://localhost:8080/api/Users", httpContent);
-            if (resMsg.ToString() != "")
+            if (resMsg.StatusCode.ToString() == "Created")
             {
                 return RedirectToAction("Index", "Login");
             }

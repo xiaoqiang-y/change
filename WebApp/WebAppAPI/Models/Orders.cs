@@ -10,7 +10,7 @@ namespace WebAppAPI.Models
             OrdersDetail = new HashSet<OrdersDetail>();
         }
 
-        public int OrdersId { get; set; }
+        public string OrdersId { get; set; }
         public DateTime? Orderdate { get; set; }
         public int UsersId { get; set; }
         public decimal? Total { get; set; }
