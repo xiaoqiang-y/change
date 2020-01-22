@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WebAppAPI.Models
+namespace WebBackstage.Models
 {
     public partial class Delivery
     {
