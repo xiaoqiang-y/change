@@ -32,6 +32,7 @@ namespace WebApp.Controllers
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("LoginUser")))
             {
                 ViewBag.LoginName = HttpContext.Session.GetString("LoginUser");//显示界面当前登录用户
+                ViewBag.LoginId = HttpContext.Session.GetString("LoginUserId");//显示界面当前登录用户
             }
             if (CategoryID == 0 && ProductID == 0)
             {
@@ -83,6 +84,7 @@ namespace WebApp.Controllers
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("LoginUser")))
             {
                 ViewBag.LoginName = HttpContext.Session.GetString("LoginUser");//显示界面当前登录用户
+                ViewBag.LoginId = HttpContext.Session.GetString("LoginUserId");//显示界面当前登录用户
             }
             ViewData["NTypes"] = NTypes;
             HttpClient httpClient = new HttpClient();
@@ -108,6 +110,7 @@ namespace WebApp.Controllers
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("LoginUser")))
             {
                 ViewBag.LoginName = HttpContext.Session.GetString("LoginUser");//显示界面当前登录用户
+                ViewBag.LoginId = HttpContext.Session.GetString("LoginUserId");//显示界面当前登录用户
             }
             HttpClient httpClient = new HttpClient();
             var resultC = await httpClient.GetStringAsync("http://localhost:8080/api/Categories");
@@ -121,7 +124,7 @@ namespace WebApp.Controllers
             var resultPh = await httpClient.GetStringAsync("http://localhost:8080/api/Photos");
             IEnumerable<Photo> listPh = JsonConvert.DeserializeObject<IEnumerable<Photo>>(resultPh);
 
-            var result = (from p in listP                          
+            var result = (from p in listP
                           join ph in listPh on p.ProductId equals ph.ProductId
                           select new HomeInfo
                           {
@@ -142,6 +145,7 @@ namespace WebApp.Controllers
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("LoginUser")))
             {
                 ViewBag.LoginName = HttpContext.Session.GetString("LoginUser");//显示界面当前登录用户
+                ViewBag.LoginId = HttpContext.Session.GetString("LoginUserId");//显示界面当前登录用户
             }
             HttpClient httpClient = new HttpClient();
             var resultC = await httpClient.GetStringAsync("http://localhost:8080/api/Categories");
@@ -193,18 +197,59 @@ namespace WebApp.Controllers
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("LoginUser")))
             {
                 ViewBag.LoginName = HttpContext.Session.GetString("LoginUser");//显示界面当前登录用户
+                ViewBag.LoginId = HttpContext.Session.GetString("LoginUserId");//显示界面当前登录用户
             }
             HttpClient httpClient = new HttpClient();
             var resultC = await httpClient.GetStringAsync("http://localhost:8080/api/Categories");
             IEnumerable<Category> listC = JsonConvert.DeserializeObject<IEnumerable<Category>>(resultC);
             ViewData["Category"] = listC.Where(p => p.ParentId != p.CategoryId);
 
-            var resultP = await httpClient.GetStringAsync("http://localhost:8080/api/Products/"+ ProductId);
-            Product product = JsonConvert.DeserializeObject<Product>(resultP); 
+            var resultP = await httpClient.GetStringAsync("http://localhost:8080/api/Products/" + ProductId);
+            Product product = JsonConvert.DeserializeObject<Product>(resultP);
 
             return View(product);
         }
+        //个人中心
+        [HttpGet]
+        public async Task<ActionResult> MyCenter(int id)//个人中心页面显示
+        {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("LoginUserId")))
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("LoginUser")))
+            {
+                ViewBag.LoginName = HttpContext.Session.GetString("LoginUser");//显示界面当前登录用户
+                ViewBag.LoginId = HttpContext.Session.GetString("LoginUserId");//显示界面当前登录用户
+            }
 
+            HttpClient httpClient = new HttpClient();
+            var resultC = await httpClient.GetStringAsync("http://localhost:8080/api/Categories");
+            IEnumerable<Category> listC = JsonConvert.DeserializeObject<IEnumerable<Category>>(resultC);
+            ViewData["Category"] = listC.Where(p => p.ParentId != p.CategoryId);
+
+            var resultD = await httpClient.GetStringAsync("http://localhost:8080/api/Deliveries/"+ HttpContext.Session.GetString("LoginUserId"));
+            IEnumerable<Delivery> listD = JsonConvert.DeserializeObject<IEnumerable<Delivery>>(resultD);
+            ViewData["Delivery"] = listD;//收货地址
+
+            var resultO = await httpClient.GetStringAsync("http://localhost:8080/api/Orders/" + HttpContext.Session.GetString("LoginUserId"));
+            IEnumerable<Orders> listO = JsonConvert.DeserializeObject<IEnumerable<Orders>>(resultO);
+            ViewData["Orders0"] = listO.Where(p => p.States == 0);//0未付款订单
+            ViewData["Orders1"] = listO.Where(p => p.States == 1);//1已付款订单
+            ViewData["Orders2"] = listO.Where(p => p.States == 2);//2已发货订单
+            ViewData["Orders3"] = listO.Where(p => p.States == 3);//3已收货订单
+            ViewData["Orders4"] = listO.Where(p => p.States == 4);//4已评价订单            
+
+            var resultU = await httpClient.GetStringAsync("http://localhost:8080/api/Users?UserName=" + HttpContext.Session.GetString("LoginUser"));
+            Users userInfo = JsonConvert.DeserializeObject<Users>(resultU);
+            ViewBag.User = userInfo;//用户信息
+
+            var resultA = await httpClient.GetStringAsync("http://localhost:8080/api/Appraises/" + HttpContext.Session.GetString("LoginUserId"));
+            IEnumerable<Appraise> listA = JsonConvert.DeserializeObject<IEnumerable<Appraise>>(resultA);
+            ViewData["Appraise"] = listA;//评价记录
+
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -41,7 +41,7 @@
                                 <h3 class="custom_blog_title">
                                     <i class="fa fa-paypal"></i>&nbsp;&nbsp;在线支付
                                 </h3>
-                                <form action="#">
+                                <form action="~/Car/OrderPay?OrdersId=@ViewBag.OrdersId" method="get">
                                     <table class="shop_table">
                                         <input type="text" name="OrdersId" style="display:none" value="@ViewBag.OrdersId" />
                                         <tr>

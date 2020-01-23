@@ -41,6 +41,10 @@ namespace WebApp
                     InstanceName = Configuration.GetSection("RedisDB:Instance").Value,
                 })
                 );
+            //分布式环境中设置相同的会话标识
+            services.AddDataProtection(options => {
+                options.ApplicationDiscriminator = "lrk.com";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

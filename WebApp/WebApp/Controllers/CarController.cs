@@ -22,6 +22,7 @@ namespace WebApp.Controllers
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("LoginUser")))
             {
                 ViewBag.LoginName = HttpContext.Session.GetString("LoginUser");//显示界面当前登录用户
+                ViewBag.LoginId = HttpContext.Session.GetString("LoginUserId");//显示界面当前登录用户
             }
             HttpClient httpClient = new HttpClient();
             var resultC = await httpClient.GetStringAsync("http://localhost:8080/api/Categories");
@@ -160,9 +161,14 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
+            if (Form["ProductId"].Count == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("LoginUser")))
             {
                 ViewBag.LoginName = HttpContext.Session.GetString("LoginUser");//显示界面当前登录用户
+                ViewBag.LoginId = HttpContext.Session.GetString("LoginUserId");//显示界面当前登录用户
             }
             List<Car> cars = new List<Car>();
             for (int i = 0; i < Form["ProductId"].Count; i++)
@@ -204,9 +210,14 @@ namespace WebApp.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
+            if (Form["ProductId"].Count == 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("LoginUser")))
             {
                 ViewBag.LoginName = HttpContext.Session.GetString("LoginUser");//显示界面当前登录用户
+                ViewBag.LoginId = HttpContext.Session.GetString("LoginUserId");//显示界面当前登录用户
             }
             HttpClient client = new HttpClient();
             var resultC = await client.GetStringAsync("http://localhost:8080/api/Categories");
@@ -253,7 +264,7 @@ namespace WebApp.Controllers
                 od.Quantity = int.Parse(Form["ProductNum"][i]);
                 od.States = 0;//0正常，1退货中，2已退货                
                 od.PhotoUrl = Form["PhotoUrl"][i];
-                od.Title = Form["Title"][i];                
+                od.Title = Form["Title"][i];
                 od.Price = decimal.Parse(Form["Price"][i]);
                 //listOD.Add(od);
                 jsonString = JsonConvert.SerializeObject(od);
@@ -265,9 +276,39 @@ namespace WebApp.Controllers
                 resMsg = await client.DeleteAsync("http://localhost:8080/api/Cars/" + od.ProductId);
 
             }
-            
+
             return View();
         }
+        [HttpGet]
+        public async Task<IActionResult> OrderPay(string OrdersId)//订单支付
+        {
+            HttpClient client = new HttpClient();
+            var resultO = await client.GetStringAsync("http://localhost:8080/api/Orders?OrderId="+OrdersId);
+            Orders order = JsonConvert.DeserializeObject<Orders>(resultO);
+            order.States = 1;
+            
+            var jsonString = JsonConvert.SerializeObject(order);
+            HttpContent httpContent = new StringContent(jsonString);
+            httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var resMsg = await client.PutAsync("http://localhost:8080/api/Orders/"+ OrdersId, httpContent);
 
+            return RedirectToAction("MyCenter", "Home");
+        }
+        [HttpGet]
+        public async Task<IActionResult> ReceiveGoods(string OrdersId)//已收货
+        {
+            HttpClient client = new HttpClient();
+            var resultO = await client.GetStringAsync("http://localhost:8080/api/Orders?OrderId=" + OrdersId);
+            Orders order = JsonConvert.DeserializeObject<Orders>(resultO);
+            order.States = 3;
+            order.DeliveryDate = DateTime.Now;
+
+            var jsonString = JsonConvert.SerializeObject(order);
+            HttpContent httpContent = new StringContent(jsonString);
+            httpContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+            var resMsg = await client.PutAsync("http://localhost:8080/api/Orders/" + OrdersId, httpContent);
+
+            return RedirectToAction("MyCenter", "Home");
+        }
     }
 }

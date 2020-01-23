@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using WebAppAPI.Models;
 
 namespace WebAppAPI.Controllers
@@ -14,28 +15,30 @@ namespace WebAppAPI.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly ChangeDBContext _context;
-
-        public OrdersController(ChangeDBContext context)
+        private readonly ILogger<OrdersController> _logger;
+        public OrdersController(ChangeDBContext context, ILogger<OrdersController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: api/Orders
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Orders>>> GetOrders()
+        public async Task<ActionResult<Orders>> GetOrders(string OrderId)
         {
-            return await _context.Orders.ToListAsync();
+            _logger.LogInformation("查询订单,订单编号：" + OrderId);
+            return await _context.Orders.FindAsync(OrderId);
         }
 
         // GET: api/Orders/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Orders>> GetOrders(int id)
+        public async Task<ActionResult<IEnumerable<Orders>>> GetOrders(int id)
         {
-            var orders = await _context.Orders.FindAsync(id);
+            var orders = await _context.Orders.Where(p => p.UsersId == id).ToListAsync();
 
             if (orders == null)
             {
-                return NotFound();
+                return null;// NotFound();
             }
 
             return orders;
@@ -47,8 +50,10 @@ namespace WebAppAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOrders(string id, Orders orders)
         {
+            _logger.LogInformation("修改支付状态,订单编号："+ id);
             if (id != orders.OrdersId)
             {
+                _logger.LogInformation("修改支付状态失败,订单编号：" + id);
                 return BadRequest();
             }
 
@@ -69,7 +74,7 @@ namespace WebAppAPI.Controllers
                     throw;
                 }
             }
-
+            _logger.LogInformation("修改支付状态成功,订单编号：" + id);
             return NoContent();
         }
 
@@ -86,10 +91,11 @@ namespace WebAppAPI.Controllers
         }
 
         // DELETE: api/Orders/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Orders>> DeleteOrders(int id)
+        //[HttpDelete("{id}")]
+        [HttpDelete]
+        public async Task<ActionResult<Orders>> DeleteOrders(string OrderId)
         {
-            var orders = await _context.Orders.FindAsync(id);
+            var orders = await _context.Orders.FindAsync(OrderId);
             if (orders == null)
             {
                 return NotFound();

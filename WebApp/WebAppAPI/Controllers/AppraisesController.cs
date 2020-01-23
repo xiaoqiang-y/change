@@ -29,13 +29,13 @@ namespace WebAppAPI.Controllers
 
         // GET: api/Appraises/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Appraise>> GetAppraise(int id)
+        public async Task<ActionResult<IEnumerable<Appraise>>> GetAppraise(int id)
         {
-            var appraise = await _context.Appraise.FindAsync(id);
+            var appraise = await _context.Appraise.Where(p => p.UsersId == id).ToListAsync();
 
             if (appraise == null)
             {
-                return NotFound();
+                return null;// NotFound();
             }
 
             return appraise;
