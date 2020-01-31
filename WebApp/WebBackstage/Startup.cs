@@ -5,9 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.StackExchangeRedis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebBackstage.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebBackstage
 {
@@ -24,6 +28,29 @@ namespace WebBackstage
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //依赖注入一个数据库上下文
+            string connString = Configuration.GetSection("connString")["ChangeDB"];
+            services.AddDbContext<ChangeDBContext>(options =>
+            {
+                options.UseSqlServer(connString);
+            });
+
+            services.AddSession(options =>      //添加session服务
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);//超时时间,分钟
+                options.Cookie.HttpOnly = true;//在cookie中设置了HttpOnly属性，那么通过js脚本将无法读取到cookie信息，这样能有效的防止XSS攻击。
+
+                //解释：这是个GDRP条例，让用户自己选择使用用cookie，详见 http://www.zhibin.org/archives/667 或 https://www.cnblogs.com/GuZhenYin/p/9154447.html
+                options.Cookie.IsEssential = true;//表示cookie是必须的，否则chrome中拿不到Session值
+            });
+            services.AddSingleton<IDistributedCache>(//读取配置文件
+                ServiceProvider => new RedisCache(new RedisCacheOptions //关联Session，通过Session调Redis
+                {
+                    Configuration = Configuration.GetSection("RedisDB:Connstring").Value,
+                    InstanceName = Configuration.GetSection("RedisDB:Instance").Value,
+                })
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +72,7 @@ namespace WebBackstage
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

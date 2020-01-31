@@ -11,12 +11,12 @@ namespace WebBackstage.Models
         }
 
         public string OrdersId { get; set; }
-        public DateTime? Orderdate { get; set; }
+        public DateTime Orderdate { get; set; }
         public int UsersId { get; set; }
-        public decimal? Total { get; set; }
-        public int? DeliveryId { get; set; }
-        public DateTime? DeliveryDate { get; set; }
-        public int? States { get; set; }
+        public decimal Total { get; set; }
+        public int DeliveryId { get; set; }
+        public DateTime DeliveryDate { get; set; }
+        public int States { get; set; }
         public string Remark { get; set; }
 
         public virtual ICollection<OrdersDetail> OrdersDetail { get; set; }
