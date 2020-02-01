@@ -11,11 +11,15 @@
     <link rel="stylesheet" href="~/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/fontAlibaba/iconfont.css">
     <link rel="stylesheet" href="~/css/后台首页.css">
-    <link rel="stylesheet" href="~/css/购物车.css">
+    <link rel="stylesheet" href="~/css/购物车.css">    
 
     <script src="~/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="~/js/xadmin.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- 富文本框 -->
+    <script src="~/ueditor/ueditor.config.js"></script>
+    <script src="~/ueditor/ueditor.all.min.js"></script>
+    <script src="~/ueditor/lang/zh-cn/zh-cn.js"></script>
 
 </head>
 <body class="index">
@@ -85,19 +89,11 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:;">
+                    <a asp-controller="Home" asp-action="GoodsManage">
                         <i class="icon iconfont left-nav-li">&#xe6cb;</i>
                         上架商品
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="#">上架新商品</a>
-                        </li>
-                        <li>
-                            <a href="#">编辑商品</a>
-                        </li>
-                    </ul>
                 </li>
                 <li>
                     <a asp-controller="Home" asp-action="OrderManage">

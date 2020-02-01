@@ -45,7 +45,84 @@ namespace WebBackstage.Controllers
 
             return View();
         }
+        public async Task<ActionResult> GoodsManage()//商品管理
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            
+            var recvProduct = await _context.Product.Select(p=>new Product {
+                ProductId=p.ProductId,
+                CategoryId=p.CategoryId,
+                Title =p.Title,
+                MarketPrice = p.MarketPrice,
+                Price = p.Price,
+                Stock = p.Stock,
+                Photo=p.Photo,
+                Category = p.Category
+            }).ToListAsync();
 
+            return View(recvProduct);
+        }
+        public async Task<ActionResult> AddGoods()//添加商品
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            var recvCategory = await _context.Category.Where(p=>p.CategoryId==p.ParentId).ToListAsync();
+            return View(recvCategory);
+        }
+        [HttpPost]
+        public async Task<ActionResult> AddGoods(Product product)//添加商品
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            product.PostTime = DateTime.Now;
+            _context.Add(product);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("GoodsManage", "Home");
+        }
+        public IActionResult EditGoods()//编辑商品
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            return View();
+        }
+        public IActionResult GoodsPic()//商品图片
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            return View();
+        }
+        public IActionResult GoodsInfo()//商品详情
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            return View();
+        }
+        public IActionResult DeleteGoods()//删除商品
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            return View();
+        }
         public async Task<ActionResult> OrderManage(int States = -1)//查询订单
         {
             if (!ReLogin())
