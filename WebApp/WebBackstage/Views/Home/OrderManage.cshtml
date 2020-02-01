@@ -10,23 +10,22 @@
                 <div class="layui-card-body layui-table-body layui-table-main">
 
                     <label class="radio-inline">
-                        <a href="/Home/OrderManage"><input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>全部</a>
-                    </label>
-
-                    <label class="radio-inline">
-                        <a href="/Home/OrderManage?States=0"><input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">未付款</a>
+                        <a href="/Home/OrderManage"><input type="radio" name="inlineRadioOptions" @(@ViewBag.States.ToString() =="-1" ? "checked":"") onchange="checkItem(this)" value="-1">全部</a>
                     </label>
                     <label class="radio-inline">
-                        <a href="/Home/OrderManage?States=1"><input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">已付款</a>
+                        <a href="/Home/OrderManage?States=0"><input type="radio" name="inlineRadioOptions" @(@ViewBag.States.ToString() =="0" ? "checked":"") onchange="checkItem(this)" value="0">未付款</a>
                     </label>
                     <label class="radio-inline">
-                        <a href="/Home/OrderManage?States=2"><input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">已发货</a>
+                        <a href="/Home/OrderManage?States=1"><input type="radio" name="inlineRadioOptions" @(@ViewBag.States.ToString() =="1" ? "checked":"") onchange="checkItem(this)" value="1">已付款</a>
                     </label>
                     <label class="radio-inline">
-                        <a href="/Home/OrderManage?States=3"><input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">已收货</a>
+                        <a href="/Home/OrderManage?States=2"><input type="radio" name="inlineRadioOptions" @(@ViewBag.States.ToString() =="2" ? "checked":"") onchange="checkItem(this)" value="2">已发货</a>
                     </label>
                     <label class="radio-inline">
-                        <a href="/Home/OrderManage?States=4"><input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">已评价</a>
+                        <a href="/Home/OrderManage?States=3"><input type="radio" name="inlineRadioOptions" @(@ViewBag.States.ToString() =="3" ? "checked":"") onchange="checkItem(this)" value="3">已收货</a>
+                    </label>
+                    <label class="radio-inline">
+                        <a href="/Home/OrderManage?States=4"><input type="radio" name="inlineRadioOptions" @(@ViewBag.States.ToString() =="4" ? "checked":"") onchange="checkItem(this)" value="4">已评价</a>
                     </label>
                     <table class="layui-table layui-form">
                         <thead>
@@ -45,7 +44,7 @@
                                 <tr>
                                     <td>@item.OrdersId</td>
                                     <td>@item.Orderdate</td>
-                                    <td>@item.Total</td>
+                                    <td>&yen;&nbsp;@item.Total.ToString("#0.00")</td>
                                     @if (@item.States == 3)
                                     {
                                         <td>@item.DeliveryDate</td>
@@ -76,18 +75,18 @@
                                         <td>未付款</td>
                                     }
                                     <td class="td-manage lafite_table_a_blue">
-                                        <a class="lafite_margin_left_10px" title="详情" href="javascript:;">
+                                        <a class="lafite_margin_left_10px" title="详情" href="/Home/OrderDetail?OrdersId=@item.OrdersId">
                                             详情
                                         </a>
                                         @if (@item.States == 1)
                                         {
-                                            <a class="lafite_margin_left_10px" title="发货" href="javascript:;">
+                                            <a class="lafite_margin_left_10px" title="发货" href="/Home/Shipments?OrdersId=@item.OrdersId">
                                                 发货
                                             </a>
                                         }
                                         @if (@item.States == 0)
                                         {
-                                            <a class="lafite_margin_left_10px" title="删除订单" href="javascript:;">
+                                            <a class="lafite_margin_left_10px" title="删除订单" href="/Home/DeleteOrder?OrdersId=@item.OrdersId">
                                                 删除订单
                                             </a>
                                         }
@@ -106,10 +105,6 @@
                             </a>
                         </li>
                         <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
                         <li>
                             <a href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
@@ -123,5 +118,9 @@
 </div>
 
 @section Scripts{
-
+    <script>
+        function checkItem(obj) {
+            window.location.href = "/Home/OrderManage?States="+obj.value;
+        }
+    </script>
 }
