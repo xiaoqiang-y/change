@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,11 +17,12 @@ namespace WebBackstage.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ChangeDBContext _context;
-
-        public HomeController(ILogger<HomeController> logger, ChangeDBContext context)
+        private IWebHostEnvironment _hostingEnvironment;
+        public HomeController(ILogger<HomeController> logger, ChangeDBContext context, IWebHostEnvironment hostingEnvironment)
         {
             _logger = logger;
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
         public bool ReLogin()
         {
@@ -96,14 +99,56 @@ namespace WebBackstage.Controllers
 
             return View();
         }
-        public IActionResult GoodsPic()//商品图片
+        public async Task<ActionResult> GoodsPic(int ProductId,string Title)//商品图片
         {
             if (!ReLogin())
             {
                 return RedirectToAction("Index", "Login");
             }
+            ViewBag.ProductId = ProductId;
+            ViewBag.ProductName = Title;
 
-            return View();
+            var recvPhoto = await _context.Photo.Where(p => p.ProductId == ProductId).ToListAsync();
+            return View(recvPhoto);
+        }
+        [HttpPost]
+        public async Task<ActionResult> GoodsPic(IFormCollection Form)//添加商品图片
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            if (Form.Files.Count>0)
+            {
+                foreach (var item in Form.Files)
+                {
+                    var fileName = item.FileName;
+                    var filePath = _hostingEnvironment.WebRootPath + @"\images\" + fileName;//获取wwwboot目录
+                    //根据路径创建文件
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await item.CopyToAsync(stream);
+                    }
+                    _context.Add(new Photo() {
+                        ProductId = int.Parse(Form["ProductId"].ToString()),
+                        PhotoUrl = fileName
+                    }) ;
+                    await _context.SaveChangesAsync();
+                }
+            }
+            
+            return RedirectToAction("GoodsPic", "Home", new { ProductId = Form["ProductId"], Title = Form["Title"] }); 
+        }
+        public async Task<ActionResult> DelGoodsPic(int PhotoId, int ProductId,string Title)//删除商品图片
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            var recvPhoto = await _context.Photo.FindAsync(PhotoId);
+            _context.Photo.Remove(recvPhoto);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("GoodsPic", "Home", new { ProductId = ProductId, Title = Title });
         }
         public IActionResult GoodsInfo()//商品详情
         {
