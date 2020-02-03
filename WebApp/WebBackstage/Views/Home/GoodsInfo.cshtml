@@ -1,0 +1,182 @@
+﻿
+@{
+    ViewData["Title"] = "商品详情";
+}
+
+<div class="row">
+    <div class="content-area content-details col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        @*<div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="lafite-layui-btn lafite_margin_left_20" lay-submit lay-filter="formDemo" onclick="returnGoodsManage()">返回</button>
+            </div>
+        </div>*@
+
+        <div class="site-main">
+            <div class="details-product">
+                <div class="details-thumd">
+                    <div class="details-nav col-xs-12 product-preview product_preview">
+                        <div id="thumbnails" class="thumbnails_carousel owl-carousel" data-nav="true">
+                            <img src=@string.Format("/images/{0}",@ViewBag.imgSrc) alt="img" style="width:400px;height:400px">
+                        </div>
+                    </div>
+                </div>
+                <div class="details-infor">
+                    <br />
+                    <h1 class="product-title">
+                        @*印花情侣卫衣女春秋薄款宽松学生BF风圆领T恤衫*@
+                        @Model.Title
+                    </h1>
+
+                    <div class="price-market">
+                        市场价:&nbsp;&nbsp;<span><a href="#">&yen;@Model.MarketPrice.ToString("#0.00")</a></span>
+                    </div>
+                    <div class="price-activity">
+                        活动价:&nbsp;&nbsp;<span><a href="#">&yen;@Model.Price.ToString("#0.00")</a></span>
+                    </div>
+                    <div class="stock">
+                        库存量:&nbsp;&nbsp;<span>@Model.Stock &nbsp;件</span>
+                    </div>
+                    <div class="variations">
+                        <div class="attribute attribute_color">
+                            <div class="color-text text-attribute">
+                                主要颜色:
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>粉色</option>
+                                    <option>绿色</option>
+                                    <option>蓝色</option>
+                                    <option>棕色</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="attribute attribute_size">
+                            <div class="size-text text-attribute">
+                                尺码:
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>S</option>
+                                    <option>M</option>
+                                    <option>L</option>
+                                    <option>XL</option>
+                                    <option>2XL</option>
+                                    <option>3XL</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-button">
+                        <div class="yith-wcwl-add-to-wishlist">
+                            <div class="yith-wcwl-add-button">
+                                销量: <strong>@ViewBag.ProductNum</strong>
+                            </div>
+                        </div>
+                        <div class="size-chart-wrapp">
+                            <div class="btn-size-chart">
+                                累计评论:<strong>@ViewBag.AppraiseNum</strong>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="tab-details-product">
+                <ul class="tab-link">
+                    <li class="active">
+                        <a data-toggle="tab" aria-expanded="true" href="#information">商品详情 </a>
+                    </li>
+                    <li class="">
+                        <a data-toggle="tab" aria-expanded="true" href="#reviews">累计评价<strong class="relist">@ViewBag.AppraiseNum</strong></a>
+                    </li>
+                </ul>
+                <div class="tab-container">
+                    <div id="information" class="tab-panel active">
+                        @Html.Raw(System.Net.WebUtility.UrlDecode(@Model.Content)) 
+                    </div>
+
+                    <div id="reviews" class="tab-panel">
+                        <div class="reviews-tab">
+                            <div class="comments">
+                                <ol class="commentlist">
+                                    <li class="conment">
+                                        <div class="conment-container list-group">
+                                            @if (@ViewBag.AppraiseNum > 0)
+                                            {
+                                                <a href="#" class="list-group-item disabled">
+                                                    宝贝评论
+                                                </a>
+                                                @foreach (var item in @ViewData["Appraise"] as IEnumerable<Appraise>)
+                                                {
+                                                    <div class="list-group-item">
+                                                        <a href="#" class="avatar">
+                                                            <img src="/images/演员.jpg" alt="..." class="img-circle" width="50" height="50">
+                                                        </a>
+                                                        <!-- 下线 -->
+                                                        <div class="comment-text">
+                                                            <div class="stars-rating">
+                                                                <span class="count-star">
+                                                                    @for (int i = 0; i < @item.Grade; i++)
+                                                                    {
+                                                                        <i class="iconfont">&#xe789;</i>
+                                                                    }
+                                                                </span>
+                                                            </div>
+                                                            <p class="meta">
+                                                                <strong class="author">@item.Users.UserName</strong>
+                                                                <span>-</span>
+                                                                <span class="time">@item.RateTime</span>
+                                                            </p>
+                                                            <div class="description">
+                                                                <p>@item.Content</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <span>暂无评论</span>
+                                            }
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                            <nav aria-label="Page navigation" id="paging">
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#" class="active">1</a></li>
+                                    <li>
+                                        <a href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: left;"></div>
+        </div>
+
+
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+@section Scripts{
+    <script>
+        function returnGoodsManage() {
+            window.history.back(-1);
+        }
+    </script>
+}

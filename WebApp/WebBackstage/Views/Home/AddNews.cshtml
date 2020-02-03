@@ -1,0 +1,162 @@
+﻿
+@{
+    @if (@ViewBag.NewsType == "add")
+    {
+        ViewData["Title"] = "新增促销资讯";
+    }
+    else
+    {
+        ViewData["Title"] = "修改促销资讯";
+    }
+
+}
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <form class="" action="/Home/AddNews" method="post" enctype="multipart/form-data">
+                @if (@Model != null)
+                {
+                    <input type="text" style="visibility: hidden; height: 0px" name="NewsId" value="@Model.NewsId" />
+                }
+                else
+                {
+                    <input type="text" style="visibility: hidden; height: 0px" name="NewsId" value="0" />
+                }
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        标题
+                    </label>
+                    <div class="layui-input-block lafite_width_30">
+                        @if (@ViewBag.NewsType == "add")
+                        {
+                            <input type="text" name="Title" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        }
+                        else
+                        {
+                            <input type="text" value="@Model.Title" name="Title" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        }
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">
+                            分类
+                        </label>
+                        <div class="layui-input-block">
+                            @if (@ViewBag.NewsType == "add")
+                            {
+                                <select name="Ntypes" lay-verify="required" class="form-control">
+                                    <option value="大宗礼品">大宗礼品</option>
+                                    <option value="促销活动">促销活动</option>
+                                    <option value="活动咨询">活动咨询</option>
+                                </select>
+                            }
+                            else
+                            {
+                                <input type="text" value="@Model.Ntypes" readonly name="Ntypes" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        发布时间
+                    </label>
+                    <div class="layui-input-block lafite_width_30">
+                        @if (@ViewBag.NewsType == "add")
+                        {
+                            <input type="text" value="@DateTime.Now.ToString("yyyy-MM-dd")" readonly name="PushTime" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        }
+                        else
+                        {
+                            <input type="text" value="@Model.PushTime.ToString("yyyy-MM-dd")" readonly name="PushTime" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        }
+
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        图片
+                    </label>
+                    <div class="layui-input-block lafite_width_30">
+                        @if (@ViewBag.NewsType == "add")
+                        {
+                            <input type="file" name="files" class="layui-input" required />
+                            @*<input type="text" name="PhotoUrl" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">*@
+                        }
+                        else
+                        {
+                            <input type="text" value="@Model.PhotoUrl" readonly name="PhotoUrl" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        }
+
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        状态
+                    </label>
+                    <div class="layui-input-block lafite_width_30">
+                        @if (@Model != null && @Model.States.ToString() == "1")
+                        {
+                            <select name="States" lay-verify="required" class="form-control">
+                                <option value="0">置顶</option>
+                                <option value="1" selected>热点</option>
+                            </select>
+                        }
+                        else
+                        {
+                            <select name="States" lay-verify="required" class="form-control">
+                                <option value="0" selected>置顶</option>
+                                <option value="1">热点</option>
+                            </select>
+                        }
+
+
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        内容描述
+                    </label>
+                    <div class="layui-input-block" onmouseout="getContent()">
+                        @*<textarea id="layeditDemo"></textarea>*@
+                        <script id="editor" type="text/plain" style="width: 100%; height: 200px;">
+                        </script>
+                        <textarea style="visibility: hidden; height: 0px" name="Content" id="procontent"></textarea>
+                        <script>
+                            //向编辑器添加内容
+                            var ue = UE.getEditor('editor');
+                            //获取编辑器内容，赋值给textarea
+                            function getContent() {
+                                document.getElementById("procontent").value = ue.getContent();
+                            }
+                        </script>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        @if (@ViewBag.NewsType == "add")
+                        {
+                            <input type="submit" class="lafite-layui-btn lafite_margin_left_20" value="新增促销咨询" />
+                        }
+                        else
+                        {
+                            <input type="submit" class="lafite-layui-btn lafite_margin_left_20" value="更新促销咨询" />
+                        }
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+
+

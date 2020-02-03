@@ -1,7 +1,101 @@
 ﻿
 @{
-    ViewData["Title"] = "EditGoods";
+    ViewData["Title"] = "编辑商品";
 }
 
-<h2>EditGoods</h2>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <form class="" action="/Home/EditGoods" method="post">
+                <input type="text" style="visibility: hidden; height: 0px" name="ProductId" value="@Model.ProductId" />
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        商品名
+                    </label>
+                    <div class="layui-input-block lafite_width_30">
+                        <input value="@Model.Title" type="text" name="Title" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        市场价格
+                    </label>
+                    <div class="layui-input-block lafite_width_30">
+                        <input value="@Model.MarketPrice.ToString("#0.00")" type="text" name="MarketPrice" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        本站价格
+                    </label>
+                    <div class="layui-input-block lafite_width_30">
+                        <input value="@Model.Price.ToString("#0.00")" type="text" name="Price" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        库存
+                    </label>
+                    <div class="layui-input-block lafite_width_30">
+                        <input value="@Model.Stock" type="text" name="Stock" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        上架时间
+                    </label>
+                    <div class="layui-input-block lafite_width_30">
+                        <input value="@Model.PostTime" readonly type="text" name="PostTime" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">
+                            商品分类
+                        </label>
+                        <div class="layui-input-block lafite_width_30">
+                            <input value="@Model.CategoryId" readonly type="text" name="CategoryId" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        内容描述
+                    </label>
+                    <div class="layui-input-block" onmouseout="getContent()">
+                        @*<textarea id="layeditDemo"></textarea>*@
+                        <script id="editor" type="text/plain" style="width: 100%; height: 200px;" @*charset="us-ascii" src="~/ueditor/lang/zh-cn/zh-cn.js"*@>
+                        </script>
+                        <textarea style="visibility: hidden; height: 0px" name="Content" id="procontent"></textarea>
+                        <script>
+                            //向编辑器添加内容
+                            var ue = UE.getEditor('editor');
+                            //ue.setContent('@Model.Content', true);
+                            
+                            window.onload = function () {                                
+                                ue.addListener('ready', function () {ue.setContent('@ViewBag.ProductContent ');}
+                                );
+                                document.getElementById("procontent").value = '@ViewBag.ProductContent ';
+
+                            }
+                            //获取编辑器内容，赋值给textarea
+                            function getContent() {
+                                document.getElementById("procontent").value = ue.getContent();
+                            }
+                        </script>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <input type="submit" class="lafite-layui-btn lafite_margin_left_20" value="保存商品" />                        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
 

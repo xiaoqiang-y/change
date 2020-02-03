@@ -39,14 +39,124 @@ namespace WebBackstage.Controllers
             }
             
         }
-        public IActionResult Index()
+        public IActionResult Index(string Exit = null)
         {
+            if (Exit == "EXIT")
+            {
+                HttpContext.Session.Remove("AdminUser");
+                HttpContext.Session.Remove("AdminUserId");
+            }
             if (!ReLogin())
             {
                 return RedirectToAction("Index", "Login");
             }
 
             return View();
+        }
+        public async Task<ActionResult> UsersManage()//用户管理
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            var recvUsers = await _context.Users.ToListAsync();
+
+            return View(recvUsers);
+        }
+        public async Task<ActionResult> DeleteUsers(int UsersId)//删除用户
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            var recvUsers = await _context.Users.FindAsync(UsersId);
+            _context.Users.Remove(recvUsers);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("UsersManage", "Home");
+        }
+
+        public async Task<ActionResult> NewsManage()//促销资讯
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            var recvNews = await _context.News.ToListAsync();
+
+            return View(recvNews);
+        }
+        public async Task<ActionResult> AddNews(int NewsId =0)//新建促销资讯
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            if (NewsId ==0)
+            {
+                ViewBag.NewsType = "add";
+                return View();
+            }
+            else
+            {
+                ViewBag.NewsType = "update";
+                var recvNews = await _context.News.FindAsync(NewsId);
+                return View(recvNews);
+            }            
+        }
+        [HttpPost]
+        public async Task<ActionResult> AddNews(IFormFile files, News news)//添加商品
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            if (news.NewsId >0)//修改
+            {
+                _context.Update(news);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                var fileName = files.FileName;
+                var filePath = _hostingEnvironment.WebRootPath + @"\images\" + fileName;//获取wwwboot目录
+                                                                                        //根据路径创建文件
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await files.CopyToAsync(stream);
+                }
+                news.PhotoUrl = fileName;
+                _context.Add(news);
+                await _context.SaveChangesAsync();
+            }          
+
+            return RedirectToAction("NewsManage", "Home");
+        }
+        public async Task<ActionResult> DeleteNews(int NewsId)//删除促销资讯
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            var recvNews = await _context.News.FindAsync(NewsId);
+            _context.News.Remove(recvNews);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("NewsManage", "Home");
+        }
+        public async Task<ActionResult> CancelNewsTop(int NewsId)//取消促销资讯置顶
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            var recvNews = await _context.News.FindAsync(NewsId);
+            recvNews.States = recvNews.States == 0 ? 1:0;
+            _context.Update(recvNews);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("NewsManage", "Home");
         }
         public async Task<ActionResult> GoodsManage()//商品管理
         {
@@ -90,14 +200,27 @@ namespace WebBackstage.Controllers
 
             return RedirectToAction("GoodsManage", "Home");
         }
-        public IActionResult EditGoods()//编辑商品
+        public async Task<ActionResult> EditGoods(int ProductId)//编辑商品
         {
             if (!ReLogin())
             {
                 return RedirectToAction("Index", "Login");
             }
+            var recvProduct = await _context.Product.FindAsync(ProductId);
+            ViewBag.ProductContent = recvProduct.Content.ToString();
+            return View(recvProduct);
+        }
+        [HttpPost]
+        public async Task<ActionResult> EditGoods(Product product)//编辑商品
+        {
+            if (!ReLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }            
+            _context.Update(product);
+            await _context.SaveChangesAsync();
 
-            return View();
+            return RedirectToAction("GoodsManage", "Home");
         }
         public async Task<ActionResult> GoodsPic(int ProductId,string Title)//商品图片
         {
@@ -150,23 +273,60 @@ namespace WebBackstage.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("GoodsPic", "Home", new { ProductId = ProductId, Title = Title });
         }
-        public IActionResult GoodsInfo()//商品详情
+        public async Task<ActionResult> GoodsInfo(int ProductId)//商品详情
         {
             if (!ReLogin())
             {
                 return RedirectToAction("Index", "Login");
             }
+            var recvProduct = await _context.Product.Select(p => new Product
+            {
+                ProductId = p.ProductId,
+                CategoryId = p.CategoryId,
+                Title = p.Title,
+                MarketPrice = p.MarketPrice,
+                Price = p.Price,
+                Content=p.Content,
+                Stock = p.Stock,
+                Photo = p.Photo,
+                Category = p.Category
+            }).Where(p=>p.ProductId== ProductId).FirstOrDefaultAsync();
+            ViewBag.imgSrc = recvProduct.Photo.FirstOrDefault().PhotoUrl;
+            var recvAppraise = await _context.Appraise.Where(p => p.ProductId == ProductId).ToListAsync();
+            ViewData["Appraise"] = recvAppraise;
+            ViewBag.AppraiseNum = recvAppraise.Count;
+            ViewBag.ProductNum = await _context.OrdersDetail.Where(p => p.ProductId == ProductId).SumAsync(p=>p.Quantity);
+            
 
-            return View();
+            return View(recvProduct);
         }
-        public IActionResult DeleteGoods()//删除商品
+        public async Task<ActionResult> DeleteGoods(int ProductId)//删除商品
         {
             if (!ReLogin())
             {
                 return RedirectToAction("Index", "Login");
+            }            
+            var recvOrderD = await _context.OrdersDetail.Where(p => p.ProductId == ProductId).ToListAsync();
+            if (recvOrderD.Count == 0)
+            {
+                var recvPhoto = await _context.Photo.Where(p => p.ProductId == ProductId).ToListAsync();
+                foreach (var item in recvPhoto)
+                {
+                    _context.Photo.Remove(item);
+                    await _context.SaveChangesAsync();
+                }
+                var recvFavorite = await _context.Favorite.Where(p => p.ProductId == ProductId).ToListAsync();
+                foreach (var item in recvFavorite)
+                {
+                    _context.Favorite.Remove(item);
+                    await _context.SaveChangesAsync();
+                }
+                var recvProduct = await _context.Product.FindAsync(ProductId);
+                _context.Product.Remove(recvProduct);
+                await _context.SaveChangesAsync();
             }
-
-            return View();
+            
+            return RedirectToAction("GoodsManage", "Home");
         }
         public async Task<ActionResult> OrderManage(int States = -1)//查询订单
         {

@@ -11,15 +11,21 @@
     <link rel="stylesheet" href="~/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/fontAlibaba/iconfont.css">
     <link rel="stylesheet" href="~/css/后台首页.css">
-    <link rel="stylesheet" href="~/css/购物车.css">    
+    <link rel="stylesheet" href="~/css/购物车.css">
+    <link rel="stylesheet" href="~/css/商品详情.css">
+    <link rel="stylesheet" href="~/css/user.css">
 
+    <script src="~/js/jquery.min.js"></script>
     <script src="~/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="~/js/xadmin.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/frontend-plugin.js"></script>
+
     <!-- 富文本框 -->
     <script src="~/ueditor/ueditor.config.js"></script>
     <script src="~/ueditor/ueditor.all.min.js"></script>
     <script src="~/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script src="~/ueditor/ueditor.parse.js"></script>
 
 </head>
 <body class="index">
@@ -47,7 +53,7 @@
             }
 
             <li class="layui-nav-item lafitewu_exit to-index">
-                <a href="#"><i class="iconfont">&#xe704;</i>退出</a>
+                <a href="/Home/Index?Exit=EXIT"><i class="iconfont">&#xe704;</i>退出</a>
             </li>
         </ul>
     </div>
@@ -62,32 +68,20 @@
                     </a>
                 </li>
                 <li>
-                    <a >
+                    <a asp-controller="Home" asp-action="NewsManage">
                         <i class="iconfont left-nav-li">&#xe706;</i>
                         促销资讯
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="#">新建资讯</a>
-                        </li>
-                        <li>
-                            <a href="#">编辑资讯</a>
-                        </li>
-                    </ul>
+                    
                 </li>
-                <li>
+                @*<li>
                     <a href="javascript:;">
                         <i class="icon iconfont left-nav-li">&#xe6b5;</i>
                         商品类型
                         <i class="iconfont nav_right">&#xe697;</i>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="#">新建二级分类</a>
-                        </li>
-                    </ul>
-                </li>
+                    </a>                   
+                </li>*@
                 <li>
                     <a asp-controller="Home" asp-action="GoodsManage">
                         <i class="icon iconfont left-nav-li">&#xe6cb;</i>
@@ -104,7 +98,7 @@
 
                 </li>
                 <li>
-                    <a href="javascript:;">
+                    <a asp-controller="Home" asp-action="UsersManage">
                         <i class="iconfont left-nav-li" lay-tips="用户管理">&#xe702;</i>
                         用户管理
                         <i class="iconfont nav_right">&#xe697;</i>
