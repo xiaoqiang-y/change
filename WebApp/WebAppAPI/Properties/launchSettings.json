@@ -22,6 +22,7 @@
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "applicationUrl": "https://localhost:8081;http://localhost:8080",
+      //"applicationUrl": "https://localhost:9081;http://localhost:9080",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

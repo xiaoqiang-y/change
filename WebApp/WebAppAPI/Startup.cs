@@ -14,6 +14,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using WebAppAPI.Models;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
+using Microsoft.OpenApi.Models;
+
 namespace WebAppAPI
 {
     public class Startup
@@ -62,8 +64,17 @@ namespace WebAppAPI
             services.AddDataProtection(options => {
                 options.ApplicationDiscriminator = "lrk.com";
             });
+            //注册swagger生成器
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Shop API",
+                    Version = "v1"
+                });
+            });
 
-        
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,7 +84,11 @@ namespace WebAppAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            //添加Swagger和SwaggerUI中间件
+            app.UseSwagger();
+            app.UseSwaggerUI(options => {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Shop API V1");
+            });
             app.UseHttpsRedirection();
 
             app.UseRouting();
